@@ -1,4 +1,6 @@
 require "khepri_connector/version"
+require "net/http"
+require "json"
 
 # The Main Khepri connector class
 class Khepri

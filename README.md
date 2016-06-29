@@ -21,10 +21,6 @@ Or install it yourself as:
 ```ruby
 #!/usr/bin/ruby
 
-# require ruby libs included in ruby - not install needed
-require 'net/http'
-require 'json'
-#
 # require the khepri connector gem
 # You need to install it with :
 #  $ gem install khepri_connector
