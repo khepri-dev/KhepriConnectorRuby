@@ -31,14 +31,23 @@ require 'json'
 #
 require 'khepri_connector'
 
-khepri_url ='http://test-khepridevelba-1t8aalo9fz0t1-723475646.eu-west-1.elb.amazonaws.com'
-api_key = '213e71dd6e9f354de2c42eee366d4263'
-instance_id = 3
+# setting you're khepri parameters
+# 
+# Initialize the client with your  API-Key. You can find it on your Khepri account.
+# you can create your instance with your khepri account 
+# 
+khepri_url ='http://sb.khepri.tech'
+api_key = 'MY_APi_KEY'
+instance_id = 1
 
+# create your Khepri object
 kh = Khepri.new(khepri_url, api_key, instance_id)
 
 # Simple ask
 answer = kh.ask
+# ask method return a JSON object like {"status":"success","solution":"a_solution"}
+# you can access to the solution if you want 
+puts answer["solution"]
 
 # Simple success
 kh.success(answer)

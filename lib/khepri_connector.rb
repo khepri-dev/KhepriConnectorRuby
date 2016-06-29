@@ -1,5 +1,6 @@
 require "khepri_connector/version"
 
+# The Main Khepri connector class
 class Khepri
 
   def initialize(khepri_url, api_key, instance_id)
@@ -7,7 +8,13 @@ class Khepri
   end
 
   #
-  # prepare and launch ask task
+  # prepare and launch ask task on Khepri
+  #
+  # @param excludes [Array] array of solutions you want to exludes
+  # @param forced [Array] array of solutions you want to force
+  # @param dimensions [Hash] hash of dimensions you want to use
+  #
+  # @return [JSON] the Khepri answer
   #
   def ask(exludes = nil, forced = nil, dimensions = {})
     params_to_add = {}
@@ -30,7 +37,11 @@ class Khepri
   end
 
   #
-  # prepare and launch success task
+  # prepare and launch success task on Khepri
+  #
+  # @param answer [JSON] the JSON answer of your ask
+  #
+  # @return [JSON] the Khepri answer
   #
   def success(answer)
     if answer["status"] == 'success'
@@ -42,7 +53,11 @@ class Khepri
   end
 
   #
-  # prepare and launch dimensions task
+  # prepare and launch dimensions task on Khepri
+  #
+  # @param answer [JSON] the JSON answer of your ask
+  #
+  # @return [JSON] the Khepri answer
   #
   def dimensions(answer)
     puts answer
@@ -56,7 +71,9 @@ class Khepri
   end
 
   #
-  # prepare and launch reset task
+  # prepare and launch success task on Khepri
+  #
+  # @return [JSON] the Khepri answer
   #
   def reset
     launch 'reset'
@@ -65,6 +82,11 @@ class Khepri
 
   #
   # launch task on khepri and get the result
+  #
+  # @param api [String] the task to call  on khepri
+  # @param params_to_add [Hash] hash of parameters to ad on khepri's call
+  #
+  # @return [JSON] the khepri answer to the request
   #
   def launch(api, params_to_add = {})
 
